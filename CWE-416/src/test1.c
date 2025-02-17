@@ -15,29 +15,9 @@
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
         buf3R2 = (char *) malloc(BUFSIZER2);
-    #include <stdio.h>
-    #include <unistd.h>
-    #include <stdlib.h>
-    #include <string.h>
-
-    #define BUFSIZER1 512
-    #define BUFSIZER2 ((BUFSIZER1/2) - 8)
-    int main(int argc, char **argv) {
-        char *buf1R1;
-        char *buf2R1;
-        char *buf2R2;
-        char *buf3R2;
-        buf1R1 = (char *) malloc(BUFSIZER1);
-        buf2R1 = (char *) malloc(BUFSIZER1);
-        strncpy(buf2R1, argv[1], BUFSIZER1-1);
-        buf2R2 = (char *) malloc(BUFSIZER2);
-        buf3R2 = (char *) malloc(BUFSIZER2);
-        free(buf1R1);
-        free(buf2R2);
-        free(buf3R2);
-        free(buf2R1);
-        return 0;
-    }
+buf2R1 = (char *) malloc(BUFSIZER1); // Reallocate buf2R1 before using it
+strncpy(buf2R1, argv[1], BUFSIZER1-1); // Now it's safe to use buf2R1
+free(buf2R1); // Free after use
         free(buf1R1);
         free(buf2R2);
         free(buf3R2);
