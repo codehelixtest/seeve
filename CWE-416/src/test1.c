@@ -13,8 +13,8 @@
         buf1R1 = (char *) malloc(BUFSIZER1);
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
-if (argc > 1) { strncpy(buf2R1, argv[1], BUFSIZER1-1); buf2R1[BUFSIZER1-1] = '\0'; } else { fprintf(stderr, "Error: No input provided\n"); return 1; }
-        buf3R2 = (char *) malloc(BUFSIZER2);
+        buf2R2 = (char *) malloc(BUFSIZER2);
+if (argc > 1 && argv[1] != NULL) { strncpy(buf2R1, argv[1], BUFSIZER1-1); } else { fprintf(stderr, "Error: No input provided\n"); return 1; }
         strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
         free(buf2R2);
