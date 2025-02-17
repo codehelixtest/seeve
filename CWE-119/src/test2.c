@@ -6,7 +6,45 @@
 /*This example applies an encoding procedure to an input string and stores it into a buffer.*/
 char * copy_input(char *user_supplied_string){
     int i, dst_index;
+char * copy_input(char *user_supplied_string){
+    int i, dst_index;
     char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE);
+    if (dst_buf == NULL) {
+        perror("Failed to allocate memory");
+        exit(EXIT_FAILURE);
+    }
+    if (MAX_SIZE <= strlen(user_supplied_string)) {
+        printf("user string too long, die evil hacker!");
+        free(dst_buf);
+        exit(0);
+    }
+    dst_index = 0;
+    for (i = 0; i < strlen(user_supplied_string); i++) {
+        if ('&' == user_supplied_string[i]) {
+            dst_buf[dst_index++] = '&';
+            dst_buf[dst_index++] = 'a';
+            dst_buf[dst_index++] = 'm';
+            dst_buf[dst_index++] = 'p';
+            dst_buf[dst_index++] = ';';
+        } else if ('<' == user_supplied_string[i]) {
+            /* encode to &lt; */
+        } else {
+            dst_buf[dst_index++] = user_supplied_string[i];
+        }
+    }
+    dst_buf[dst_index] = '\0'; // Null-terminate the string
+    return dst_buf;
+}
+
+int main() {
+    char *dst_buff;
+    char uss[MAX_SIZE]; // Allocate buffer for user input
+    read(0, uss, MAX_SIZE);
+    dst_buff = copy_input(uss);
+    printf("%s", dst_buff); // Corrected printf usage
+    free(dst_buff); // Free allocated memory
+    return 0;
+}
     if ( MAX_SIZE <= strlen(user_supplied_string) ){
         printf("user string too long, die evil hacker!");
         exit(0);
