@@ -8,5 +8,10 @@ int GetUntrustedOffset(){
 int main (int argc, char **argv) {
     char *items[] = {"boat", "car", "truck", "train"};
     int index = GetUntrustedOffset();
-    printf("You selected %s\n", items[index-1]);
+int index = GetUntrustedOffset();
+if (index < 1 || index > 4) {
+    printf("Invalid selection\n");
+    return 1;
+}
+printf("You selected %s\n", items[index-1]);
 }
