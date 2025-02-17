@@ -13,6 +13,7 @@
         buf1R1 = (char *) malloc(BUFSIZER1);
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
+        buf2R2 = (char *) malloc(BUFSIZER2);
 buf1R1 = (char *) malloc(BUFSIZER1);
 if (buf1R1 == NULL) { perror("malloc failed for buf1R1"); exit(EXIT_FAILURE); }
 buf2R1 = (char *) malloc(BUFSIZER1);
@@ -21,7 +22,6 @@ buf2R2 = (char *) malloc(BUFSIZER2);
 if (buf2R2 == NULL) { perror("malloc failed for buf2R2"); exit(EXIT_FAILURE); }
 buf3R2 = (char *) malloc(BUFSIZER2);
 if (buf3R2 == NULL) { perror("malloc failed for buf3R2"); exit(EXIT_FAILURE); }
-        buf3R2 = (char *) malloc(BUFSIZER2);
         strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
         free(buf2R2);
