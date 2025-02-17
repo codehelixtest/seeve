@@ -2,7 +2,7 @@
 #include <string.h>
 
 void printWrapper(char *string) {
-    printf(string);
+if (argc > 1 && argv[1] != NULL) { memcpy(buf, argv[1], 5012); printWrapper(argv[1]); } else { printf("No input provided\n"); }
 }
 
 int main(int argc, char **argv) {
