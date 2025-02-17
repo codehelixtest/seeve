@@ -2,7 +2,27 @@
 #include <stdlib.h>
 void dangerous_func ( int* ptr , int a, int b) {
      int val = 0;
-     if (! ptr) return;
+void dangerous_func ( int* ptr , int a, int b) {
+    int val = 0;
+    if (!ptr) return;
+    if (a) {
+        *ptr += 2;
+    } else {
+        val = *ptr;
+        free(ptr);
+        return; // Ensure we exit after freeing
+    }
+    if (b) {
+        val += 5;
+    } else {
+        // Check if ptr is still valid before dereferencing
+        if (ptr) {
+            val += *ptr;
+        }
+    }
+    if (a) free(ptr);
+    printf("val = %i\n", val);
+}
      if(a) {
          *ptr+= 2;
      } else {
@@ -20,6 +40,6 @@ void dangerous_func ( int* ptr , int a, int b) {
 
 int main () {
      /* Unsafe function call */
-int* ptr = malloc(sizeof(int)); if (!ptr) { fprintf(stderr, "Memory allocation failed\n"); return 1; } dangerous_func(ptr, 0, 0);
+     dangerous_func(malloc(sizeof ( int)),0,0) ;
      return 0;
 }
