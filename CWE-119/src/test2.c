@@ -7,30 +7,7 @@
 char * copy_input(char *user_supplied_string){
     int i, dst_index;
     char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE);
-char * copy_input(char *user_supplied_string){
-    int i, dst_index;
-    char *dst_buf = (char*) malloc(5 * sizeof(char) * MAX_SIZE);
-    if (MAX_SIZE <= strlen(user_supplied_string)) {
-        printf("user string too long, die evil hacker!");
-        exit(0);
-    }
-    dst_index = 0;
-    for (i = 0; i < strlen(user_supplied_string); i++) {
-        if ('&' == user_supplied_string[i]) {
-            dst_buf[dst_index++] = '&';
-            dst_buf[dst_index++] = 'a';
-            dst_buf[dst_index++] = 'm';
-            dst_buf[dst_index++] = 'p';
-            dst_buf[dst_index++] = ';';
-        } else if ('<' == user_supplied_string[i]) {
-            /* encode to &lt; */
-        } else {
-            dst_buf[dst_index++] = user_supplied_string[i];
-        }
-    }
-    dst_buf[dst_index] = '\0'; // Null-terminate the string
-    return dst_buf;
-}
+    if ( MAX_SIZE <= strlen(user_supplied_string) ){
         printf("user string too long, die evil hacker!");
         exit(0);
     }
@@ -40,7 +17,51 @@ char * copy_input(char *user_supplied_string){
 Furthermore, the programmer assumes encoding expansion will only expand a given character by a factor of 4,
 while the encoding of the ampersand expands by 5. As a result, 
 when the encoding procedure expands the string it is possible to overflow the destination buffer if the attacker provides a string of many ampersands.*/
+char * copy_input(char *user_supplied_string){
+    int i, dst_index;
+    char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE);
+    if ( MAX_SIZE <= strlen(user_supplied_string) ){
+        printf("user string too long, die evil hacker!");
+        exit(0);
+    }
+    dst_index = 0;
+    int encoded_length = 0;
     for ( i = 0; i < strlen(user_supplied_string); i++ ){
+        if( '&' == user_supplied_string[i] ){
+            encoded_length += 5;
+        }
+        else if ('<' == user_supplied_string[i] ){
+            encoded_length += 4; // assuming encoding to &lt;
+        }
+        else {
+            encoded_length += 1;
+        }
+    }
+    if (encoded_length > 4 * MAX_SIZE) {
+        printf("Encoded string too long, die evil hacker!");
+        exit(0);
+    }
+    for ( i = 0; i < strlen(user_supplied_string); i++ ){
+        if( '&' == user_supplied_string[i] ){
+            dst_buf[dst_index++] = '&';
+            dst_buf[dst_index++] = 'a';
+            dst_buf[dst_index++] = 'm';
+            dst_buf[dst_index++] = 'p';
+            dst_buf[dst_index++] = ';';
+        }
+        else if ('<' == user_supplied_string[i] ){
+            dst_buf[dst_index++] = '&';
+            dst_buf[dst_index++] = 'l';
+            dst_buf[dst_index++] = 't';
+            dst_buf[dst_index++] = ';';
+        }
+        else {
+            dst_buf[dst_index++] = user_supplied_string[i];
+        }
+    }
+    dst_buf[dst_index] = '\0'; // Null-terminate the string
+    return dst_buf;
+}
         if( '&' == user_supplied_string[i] ){
             dst_buf[dst_index++] = '&';
             dst_buf[dst_index++] = 'a';
