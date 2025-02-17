@@ -9,10 +9,27 @@ int main()
 {
     char *buf;
     size_t len;
+    if (read(0, &len, sizeof(len)) <= 0 || len > UINT_MAX) {
+        // Handle error: invalid length
+        return 1;
+    }
+    buf = mymalloc(len);
+    if (buf == NULL) {
+        // Handle malloc failure
+        return 1;
+    }
+    read(0, buf, len);
+    return 0;
+}
+
+int main()
+{
+    char *buf;
+    size_t len;
     read(0, &len, sizeof(len));
     /* we forgot to check the maximum length */
     /* 64-bit size_t gets truncated to 32-bit unsigned int */
     buf = mymalloc(len);
-size_t len; read(0, &len, sizeof(len)); if (len > MAX_SIZE) { /* handle error */ } buf = mymalloc(len);
+    read(0, buf, len);
     return 0;
 }
