@@ -1,16 +1,15 @@
 #include <stdlib.h>
 #define SIZE 16
 int main(){
-char* ptr = (char*)malloc(SIZE);
-if (ptr == NULL) {
-    // Handle memory allocation failure
-    return 1;
+    char* ptr = (char*)malloc (SIZE);
+int main(){
+    char* ptr = (char*)malloc(SIZE);
+    if (ptr) {
+        free(ptr);
+        ptr = NULL; // Prevent double free
+    }
+    return 0;
 }
-if (1) {
-    free(ptr);
-}
-free(ptr);
-    if (1) {
         free(ptr);
     }
     free(ptr);
