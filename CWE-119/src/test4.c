@@ -10,21 +10,24 @@ int main(int argc, char *argv[]){
     char a[MAX_SIZE];
     
     /*checks if the user provided an input*/
+    if (argc<2) return 0;
+    
+    /*checks if the input provided by the user fits in the array a*/
+    if (MAX_SIZE <= strlen(argv[1])){
+       printf("user string too long");
 int main(int argc, char *argv[]){
     int i, j=0;
     char a[MAX_SIZE];
     if (argc<2) return 0;
     int inputLength = strlen(argv[1]);
-    int encodedLength = 0;
+    int expandedLength = inputLength;
     for (i = 0; i < inputLength; i++) {
         if (argv[1][i] == '&') {
-            encodedLength += 5;
-        } else {
-            encodedLength += 1;
+            expandedLength += 4; // Each '&' expands to 5 characters
         }
     }
-    if (encodedLength >= MAX_SIZE) {
-        printf("user string too long");
+    if (expandedLength >= MAX_SIZE) {
+        printf("user string too long\n");
         return 0;
     }
     for (i = 0; i < inputLength; i++) {
@@ -42,11 +45,6 @@ int main(int argc, char *argv[]){
     printf("The encoded string is %s \n", a);
     return 0;
 }
-    
-    /*checks if the input provided by the user fits in the array a*/
-    if (MAX_SIZE <= strlen(argv[1])){
-       printf("user string too long");
-       return 0;
     }
  
     /*performs the encoding*/
