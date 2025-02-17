@@ -12,25 +12,7 @@ void dangerous_func ( int* ptr , int a, int b) {
      if(b) {
          val += 5;
      } else {
-void dangerous_func ( int* ptr , int a, int b) {
-     int val = 0;
-     if (!ptr) return;
-     if(a) {
-         *ptr += 2;
-     } else {
-         val = *ptr;
-         free(ptr);
-         return; // Exit after freeing to prevent use after free
-     }
-     if(b) {
-         val += 5;
-     } else {
-         // Do not dereference ptr here as it has been freed
-         return; // Exit to prevent use after free
-     }
-     if(a) free(ptr);
-     printf ("val = %i\n", val);
- }
+         val += *ptr ; /* TP: use after free detected : ptr */
      }
      if(a) free(ptr) ;
      printf ("val = %i\n", val) ;
@@ -38,6 +20,6 @@ void dangerous_func ( int* ptr , int a, int b) {
 
 int main () {
      /* Unsafe function call */
-     dangerous_func(malloc(sizeof ( int)),0,0) ;
+int* ptr = malloc(sizeof(int)); if (!ptr) { fprintf(stderr, "Memory allocation failed\n"); return 1; } dangerous_func(ptr, 0, 0);
      return 0;
 }
