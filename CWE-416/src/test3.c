@@ -14,7 +14,26 @@ void dangerous_func ( int* ptr , int a, int b) {
      } else {
          val += *ptr ; /* TP: use after free detected : ptr */
      }
-     if(a) free(ptr) ;
+void dangerous_func ( int* ptr , int a, int b) {
+     int val = 0;
+     if (!ptr) return;
+     if(a) {
+         *ptr += 2;
+     } else {
+         val = *ptr;
+         free(ptr);
+         ptr = NULL; // Set ptr to NULL after freeing
+     }
+     if(b) {
+         val += 5;
+     } else {
+         if (ptr) { // Check if ptr is not NULL before dereferencing
+             val += *ptr;
+         }
+     }
+     if(a) free(ptr);
+     printf ("val = %i\n", val);
+ }
      printf ("val = %i\n", val) ;
      }
 

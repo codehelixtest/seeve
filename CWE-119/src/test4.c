@@ -19,7 +19,36 @@ int main(int argc, char *argv[]){
     }
  
     /*performs the encoding*/
-    for (i=0; i < strlen(argv[1]); i++){
+int main(int argc, char *argv[]){
+    int i, j=0;
+    char a[MAX_SIZE];
+    if (argc<2) return 0;
+    int inputLength = strlen(argv[1]);
+    int ampersandCount = 0;
+    for (i = 0; i < inputLength; i++) {
+        if (argv[1][i] == '&') {
+            ampersandCount++;
+        }
+    }
+    if (MAX_SIZE <= inputLength + (ampersandCount * 4)) {
+        printf("user string too long");
+        return 0;
+    }
+    for (i = 0; i < inputLength; i++) {
+        if (argv[1][i] == '&') {
+            a[j++] = '&';
+            a[j++] = 'a';
+            a[j++] = 'm';
+            a[j++] = 'p';
+            a[j++] = ';';
+        } else {
+            a[j++] = argv[1][i];
+        }
+    }
+    a[j] = '\0'; // Null-terminate the string
+    printf("The encoded string is %s \n", a);
+    return 0;
+}
         if( '&' == argv[1][i] ){
             a[j++] = '&';
             a[j++] = 'a';

@@ -11,7 +11,7 @@ int main (){
     if (err) {
         abrt = 1;
         free(ptr);
-        char* ptr2 = (char*) malloc(2*sizeof(char));
+char* ptr = (char*) malloc(SIZE*sizeof(char)); if (ptr == NULL) { fprintf(stderr, "Memory allocation failed\n"); exit(EXIT_FAILURE); }
     }
     if (abrt) {
         printf("operation aborted before commit. Pointer value is ptr: %s",ptr);
