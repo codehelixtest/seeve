@@ -9,6 +9,11 @@ void dangerous_func ( int* ptr , int a, int b) {
          val=*ptr ; /* uFP: Use of null pointer detected : ptr */
          free(ptr) ;
      }
+     if(b) {
+         val += 5;
+     } else {
+         val += *ptr ; /* TP: use after free detected : ptr */
+     }
 void dangerous_func ( int* ptr , int a, int b) {
      int val = 0;
      if (!ptr) return;
@@ -17,7 +22,7 @@ void dangerous_func ( int* ptr , int a, int b) {
      } else {
          val = *ptr;
          free(ptr);
-         ptr = NULL; // Set ptr to NULL after free to avoid use after free
+         ptr = NULL; // Set ptr to NULL after freeing
      }
      if(b) {
          val += 5;
@@ -26,16 +31,9 @@ void dangerous_func ( int* ptr , int a, int b) {
              val += *ptr;
          }
      }
-     if(a) {
-         free(ptr);
-     }
+     if(a) free(ptr);
      printf ("val = %i\n", val);
  }
-         val += 5;
-     } else {
-         val += *ptr ; /* TP: use after free detected : ptr */
-     }
-     if(a) free(ptr) ;
      printf ("val = %i\n", val) ;
      }
 
