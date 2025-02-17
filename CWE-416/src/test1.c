@@ -11,10 +11,10 @@
         char *buf2R2;
         char *buf3R2;
         buf1R1 = (char *) malloc(BUFSIZER1);
-buf2R1 = (char *) malloc(BUFSIZER1); // Allocate memory for buf2R1 after freeing it
-strncpy(buf2R1, argv[1], BUFSIZER1-1); // Now safely copy data into buf2R1
+        buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
-        buf2R2 = (char *) malloc(BUFSIZER2);
+buf2R1 = (char *) malloc(BUFSIZER1); // Allocate memory for buf2R1 again before using it
+strncpy(buf2R1, argv[1], BUFSIZER1-1); // Now this is safe to use
         buf3R2 = (char *) malloc(BUFSIZER2);
         strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
