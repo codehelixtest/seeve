@@ -10,7 +10,38 @@ int main(int argc, char *argv[]){
     char a[MAX_SIZE];
     
     /*checks if the user provided an input*/
+int main(int argc, char *argv[]){
+    int i, j=0;
+    char a[MAX_SIZE];
     if (argc<2) return 0;
+    int inputLength = strlen(argv[1]);
+    int encodedLength = 0;
+    for (i = 0; i < inputLength; i++) {
+        if (argv[1][i] == '&') {
+            encodedLength += 5;
+        } else {
+            encodedLength += 1;
+        }
+    }
+    if (encodedLength >= MAX_SIZE) {
+        printf("user string too long");
+        return 0;
+    }
+    for (i = 0; i < inputLength; i++) {
+        if (argv[1][i] == '&') {
+            a[j++] = '&';
+            a[j++] = 'a';
+            a[j++] = 'm';
+            a[j++] = 'p';
+            a[j++] = ';';
+        } else {
+            a[j++] = argv[1][i];
+        }
+    }
+    a[j] = '\0'; // Null-terminate the string
+    printf("The encoded string is %s \n", a);
+    return 0;
+}
     
     /*checks if the input provided by the user fits in the array a*/
     if (MAX_SIZE <= strlen(argv[1])){
@@ -29,41 +60,7 @@ int main(int argc, char *argv[]){
         }
         else a[j++]=argv[1][i]; 
      }
-int main(int argc, char *argv[]){
-    int i, j=0;
-    char a[MAX_SIZE];
-    if (argc<2) return 0;
-    if (MAX_SIZE <= strlen(argv[1])){
-       printf("user string too long");
-       return 0;
-    }
-    int encodedLength = 0;
-    for (i=0; i < strlen(argv[1]); i++){
-        if( '&' == argv[1][i] ){
-            encodedLength += 5;
-        } else {
-            encodedLength += 1;
-        }
-    }
-    if (encodedLength >= MAX_SIZE) {
-        printf("Encoded string too long");
-        return 0;
-    }
-    for (i=0; i < strlen(argv[1]); i++){
-        if( '&' == argv[1][i] ){
-            a[j++] = '&';
-            a[j++] = 'a';
-            a[j++] = 'm';
-            a[j++] = 'p';
-            a[j++] = ';';
-        } else {
-            a[j++] = argv[1][i];
-        }
-    }
-    a[j] = '\0'; // Null-terminate the string
-    printf("The encoded string is %s \n", a);
-    return 0;
-}
+     printf("The encoded string is %s \n",a);
      return 0;
 }
 
