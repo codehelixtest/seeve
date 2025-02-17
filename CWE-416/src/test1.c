@@ -14,8 +14,8 @@
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
-if (argc > 1) { strncpy(buf2R1, argv[1], BUFSIZER1 - 1); buf2R1[BUFSIZER1 - 1] = '\0'; } else { fprintf(stderr, "No input provided\n"); return 1; }
-        strncpy(buf2R1, argv[1], BUFSIZER1-1);
+        buf3R2 = (char *) malloc(BUFSIZER2);
+strncpy(buf2R1, argv[1], BUFSIZER1-1); // Ensure buf2R1 is allocated before use
         free(buf1R1);
         free(buf2R2);
         free(buf3R2);
