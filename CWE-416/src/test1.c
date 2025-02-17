@@ -10,12 +10,12 @@
         char *buf2R1;
         char *buf2R2;
         char *buf3R2;
-        buf1R1 = (char *) malloc(BUFSIZER1);
+if (argc > 1) { strncpy(buf2R1, argv[1], BUFSIZER1-1); buf2R1[BUFSIZER1-1] = '\0'; } else { fprintf(stderr, "Usage: %s <input_string>\n", argv[0]); return 1; }
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
         buf3R2 = (char *) malloc(BUFSIZER2);
-strncpy(buf2R1, argv[1], BUFSIZER1-1); // Ensure buf2R1 is allocated before use
+        strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
         free(buf2R2);
         free(buf3R2);
