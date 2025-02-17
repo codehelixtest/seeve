@@ -1,5 +1,5 @@
 
-unsigned int amount(int y){ return y;}
+unsigned int amount(int y) { return (unsigned int)(y < 0 ? 0 : y); }
 
 int main(){
    int amoun;
