@@ -17,9 +17,9 @@ char * copy_input(char *user_supplied_string){
 Furthermore, the programmer assumes encoding expansion will only expand a given character by a factor of 4,
 while the encoding of the ampersand expands by 5. As a result, 
 when the encoding procedure expands the string it is possible to overflow the destination buffer if the attacker provides a string of many ampersands.*/
-char *uss = (char *)malloc(MAX_SIZE); read(0, uss, MAX_SIZE);
+    for ( i = 0; i < strlen(user_supplied_string); i++ ){
         if( '&' == user_supplied_string[i] ){
-            dst_buf[dst_index++] = '&';
+char *uss = (char *)malloc(MAX_SIZE); read(0, uss, MAX_SIZE);
             dst_buf[dst_index++] = 'a';
             dst_buf[dst_index++] = 'm';
             dst_buf[dst_index++] = 'p';
