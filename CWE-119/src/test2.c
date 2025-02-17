@@ -20,10 +20,8 @@ when the encoding procedure expands the string it is possible to overflow the de
     for ( i = 0; i < strlen(user_supplied_string); i++ ){
         if( '&' == user_supplied_string[i] ){
             dst_buf[dst_index++] = '&';
-char uss[MAX_SIZE];
-read(0, uss, MAX_SIZE);
-uss[MAX_SIZE - 1] = '\0'; // Ensure null termination
-            dst_buf[dst_index++] = 'm';
+            dst_buf[dst_index++] = 'a';
+char *uss = (char *)malloc(MAX_SIZE);
             dst_buf[dst_index++] = 'p';
             dst_buf[dst_index++] = ';';
         }
