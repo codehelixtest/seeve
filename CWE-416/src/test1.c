@@ -15,8 +15,8 @@
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
         buf3R2 = (char *) malloc(BUFSIZER2);
-buf2R1 = (char *) malloc(BUFSIZER1); // Allocate memory for buf2R1 again before using it
-strncpy(buf2R1, argv[1], BUFSIZER1-1); // Now this is safe to use
+buf2R1 = (char *) malloc(BUFSIZER1);
+strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
         free(buf2R2);
         free(buf3R2);
