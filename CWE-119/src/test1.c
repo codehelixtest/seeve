@@ -10,22 +10,9 @@ int main()
     char *buf;
     size_t len;
     read(0, &len, sizeof(len));
-    if (len > MAX_LENGTH) { /* handle error */ return 1; }
-    buf = mymalloc(len);
-    if (buf == NULL) { /* handle malloc failure */ return 1; }
-    read(0, buf, len);
-    free(buf); // Free the allocated memory
-    return 0;
-}
-
-int main()
-{
-    char *buf;
-    size_t len;
-    read(0, &len, sizeof(len));
     /* we forgot to check the maximum length */
     /* 64-bit size_t gets truncated to 32-bit unsigned int */
     buf = mymalloc(len);
-    read(0, buf, len);
+size_t len; read(0, &len, sizeof(len)); if (len > MAX_SIZE) { /* handle error */ } buf = mymalloc(len);
     return 0;
 }
