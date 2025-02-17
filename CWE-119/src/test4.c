@@ -15,40 +15,11 @@ int main(int argc, char *argv[]){
     /*checks if the input provided by the user fits in the array a*/
     if (MAX_SIZE <= strlen(argv[1])){
        printf("user string too long");
-int main(int argc, char *argv[]){
-    int i, j=0;
-    char a[MAX_SIZE];
-    if (argc<2) return 0;
-    int inputLength = strlen(argv[1]);
-    int expandedLength = inputLength;
-    for (i = 0; i < inputLength; i++) {
-        if (argv[1][i] == '&') {
-            expandedLength += 4; // Each '&' expands to 5 characters
-        }
-    }
-    if (expandedLength >= MAX_SIZE) {
-        printf("user string too long\n");
-        return 0;
-    }
-    for (i = 0; i < inputLength; i++) {
-        if (argv[1][i] == '&') {
-            a[j++] = '&';
-            a[j++] = 'a';
-            a[j++] = 'm';
-            a[j++] = 'p';
-            a[j++] = ';';
-        } else {
-            a[j++] = argv[1][i];
-        }
-    }
-    a[j] = '\0'; // Null-terminate the string
-    printf("The encoded string is %s \n", a);
-    return 0;
-}
+       return 0;
     }
  
     /*performs the encoding*/
-    for (i=0; i < strlen(argv[1]); i++){
+for (i=0; i < strlen(argv[1]); i++) { if( '&' == argv[1][i] ) { if (j + 5 >= MAX_SIZE) { printf("Buffer overflow risk"); return 0; } a[j++] = '&'; a[j++] = 'a'; a[j++] = 'm'; a[j++] = 'p'; a[j++] = ';'; } else { if (j + 1 >= MAX_SIZE) { printf("Buffer overflow risk"); return 0; } a[j++] = argv[1][i]; } }
         if( '&' == argv[1][i] ){
             a[j++] = '&';
             a[j++] = 'a';
