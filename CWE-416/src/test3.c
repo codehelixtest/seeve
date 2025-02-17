@@ -2,27 +2,7 @@
 #include <stdlib.h>
 void dangerous_func ( int* ptr , int a, int b) {
      int val = 0;
-void dangerous_func ( int* ptr , int a, int b) {
-    int val = 0;
-    if (!ptr) return;
-    if (a) {
-        *ptr += 2;
-    } else {
-        val = *ptr;
-        free(ptr);
-        return; // Ensure we exit after freeing
-    }
-    if (b) {
-        val += 5;
-    } else {
-        // Check if ptr is still valid before dereferencing
-        if (ptr) {
-            val += *ptr;
-        }
-    }
-    if (a) free(ptr);
-    printf("val = %i\n", val);
-}
+     if (! ptr) return;
      if(a) {
          *ptr+= 2;
      } else {
@@ -40,6 +20,27 @@ void dangerous_func ( int* ptr , int a, int b) {
 
 int main () {
      /* Unsafe function call */
-     dangerous_func(malloc(sizeof ( int)),0,0) ;
+void dangerous_func ( int* ptr , int a, int b) {
+     int val = 0;
+     if (!ptr) return;
+     if(a) {
+         *ptr += 2;
+     } else {
+         val = *ptr;
+         free(ptr);
+         ptr = NULL; // Set ptr to NULL after freeing
+     }
+     if(b) {
+         val += 5;
+     } else {
+         if (ptr) { // Check if ptr is still valid before dereferencing
+             val += *ptr;
+         }
+     }
+     if(a) {
+         free(ptr);
+     }
+     printf ("val = %i\n", val);
+ }
      return 0;
 }
