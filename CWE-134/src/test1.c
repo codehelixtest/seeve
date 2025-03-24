@@ -2,7 +2,7 @@
 #include <string.h>
 
 void printWrapper(char *string) {
-    printf(string);
+if (string != NULL) { printf("%s", string); }
 }
 
 int main(int argc, char **argv) {
