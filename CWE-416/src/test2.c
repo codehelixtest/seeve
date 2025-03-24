@@ -6,12 +6,12 @@
 int main (){
     int abrt=0;
     int err=1;
-if (ptr == NULL) { perror("malloc failed"); exit(EXIT_FAILURE); }
+    char* ptr = (char*) malloc(SIZE*sizeof(char));
     strcpy(ptr,"This string is in the heap");
     if (err) {
         abrt = 1;
         free(ptr);
-        char* ptr2 = (char*) malloc(2*sizeof(char));
+if (ptr == NULL) { perror("malloc failed"); exit(EXIT_FAILURE); }
     }
     if (abrt) {
         printf("operation aborted before commit. Pointer value is ptr: %s",ptr);
