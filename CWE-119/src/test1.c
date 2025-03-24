@@ -3,7 +3,7 @@ if "unsigned int" is 32 bits and "size_t" is 64 bits: */
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdlib.h>
-void *mymalloc(unsigned int size) { return malloc(size); }
+if (len > MAX_SIZE) { return NULL; } buf = mymalloc(len);
 
 int main()
 {
