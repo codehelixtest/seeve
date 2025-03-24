@@ -36,8 +36,8 @@ when the encoding procedure expands the string it is possible to overflow the de
 int main(){
     char *dst_buff;
     char *uss;
-    read(0,uss,MAX_SIZE);
+char *uss = (char *)malloc(MAX_SIZE);
     dst_buff=copy_input(uss);
-char uss[MAX_SIZE];
+    printf(*dst_buff);
     return 0;
 }
