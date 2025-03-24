@@ -13,8 +13,8 @@
         buf1R1 = (char *) malloc(BUFSIZER1);
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
-if (argv[1] != NULL && buf2R1 != NULL) { strncpy(buf2R1, argv[1], BUFSIZER1-1); }
-        buf3R2 = (char *) malloc(BUFSIZER2);
+        buf2R2 = (char *) malloc(BUFSIZER2);
+if (strncpy(buf2R1, argv[1], BUFSIZER1-1) == NULL) { perror("strncpy failed"); exit(EXIT_FAILURE); }
         strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
         free(buf2R2);
