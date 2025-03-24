@@ -6,7 +6,7 @@
 /*This example applies an encoding procedure to an input string and stores it into a buffer.*/
 char * copy_input(char *user_supplied_string){
     int i, dst_index;
-    char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE);
+char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE); if (dst_buf == NULL) { perror("malloc failed"); exit(EXIT_FAILURE); }
     if ( MAX_SIZE <= strlen(user_supplied_string) ){
         printf("user string too long, die evil hacker!");
         exit(0);
@@ -17,7 +17,7 @@ char * copy_input(char *user_supplied_string){
 Furthermore, the programmer assumes encoding expansion will only expand a given character by a factor of 4,
 while the encoding of the ampersand expands by 5. As a result, 
 when the encoding procedure expands the string it is possible to overflow the destination buffer if the attacker provides a string of many ampersands.*/
-printf("%s", dst_buff);
+    for ( i = 0; i < strlen(user_supplied_string); i++ ){
         if( '&' == user_supplied_string[i] ){
             dst_buf[dst_index++] = '&';
             dst_buf[dst_index++] = 'a';
