@@ -23,12 +23,12 @@ when the encoding procedure expands the string it is possible to overflow the de
             dst_buf[dst_index++] = 'a';
             dst_buf[dst_index++] = 'm';
             dst_buf[dst_index++] = 'p';
-char *uss = (char *)malloc(MAX_SIZE);
+            dst_buf[dst_index++] = ';';
         }
         else if ('<' == user_supplied_string[i] ){
         /* encode to &lt; */
         }
-        else dst_buf[dst_index++] = user_supplied_string[i];
+char uss[MAX_SIZE]; read(0, uss, MAX_SIZE);
     }
     return dst_buf;
 }
