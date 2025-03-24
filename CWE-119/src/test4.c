@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
         }
         else a[j++]=argv[1][i]; 
      }
-     printf("The encoded string is %s \n",a);
+char a[MAX_SIZE] = {0};
      return 0;
 }
 
