@@ -10,7 +10,10 @@ int main(int argc, char *argv[]){
     char a[MAX_SIZE];
     
     /*checks if the user provided an input*/
-    if (argc<2) return 0;
+if (MAX_SIZE <= strlen(argv[1]) + (5 * count_ampersands(argv[1]))){
+   printf("user string too long");
+   return 0;
+}
     
     /*checks if the input provided by the user fits in the array a*/
     if (MAX_SIZE <= strlen(argv[1])){
@@ -29,7 +32,7 @@ int main(int argc, char *argv[]){
         }
         else a[j++]=argv[1][i]; 
      }
-char a[MAX_SIZE] = {0};
+     printf("The encoded string is %s \n",a);
      return 0;
 }
 
