@@ -14,7 +14,12 @@ void dangerous_func ( int* ptr , int a, int b) {
      } else {
          val += *ptr ; /* TP: use after free detected : ptr */
      }
-     if(a) free(ptr) ;
+if(b) {
+    val += 5;
+} else {
+    free(ptr);
+    val += 0; // Prevent use after free
+}
      printf ("val = %i\n", val) ;
      }
 

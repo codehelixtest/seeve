@@ -9,6 +9,6 @@ int main (int argc, char **argv)
 	snprintf(buf,sizeof buf, argv [1]);
 	buf[sizeof buf -1 ] = 0;
 	printf("Buffer size is: (%d) \n Data input: %s \n",strlen(buf),buf);
-	printf("X equals: %d in hex: %#x\n Memory address for x: (%p) \n",x,x,&x);
+snprintf(buf, sizeof buf, "%s", argv[1]);
 	return 0 ;
 }
