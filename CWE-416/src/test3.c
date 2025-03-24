@@ -12,7 +12,7 @@ void dangerous_func ( int* ptr , int a, int b) {
      if(b) {
          val += 5;
      } else {
-if (b) { val += 5; } else { return; }
+         val += *ptr ; /* TP: use after free detected : ptr */
      }
      if(a) free(ptr) ;
      printf ("val = %i\n", val) ;
@@ -20,6 +20,6 @@ if (b) { val += 5; } else { return; }
 
 int main () {
      /* Unsafe function call */
-     dangerous_func(malloc(sizeof ( int)),0,0) ;
+int* ptr = malloc(sizeof(int)); if (!ptr) return; dangerous_func(ptr, 0, 0);
      return 0;
 }
