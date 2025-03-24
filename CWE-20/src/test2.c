@@ -3,7 +3,7 @@
 /*This function attempts to extract a pair of numbers from a user-supplied string.*/
 void parse_data(char *untrusted_input){
     int m,n,error;
-if (error != 2) { printf("Did not specify both integer values. Die evil hacker!\n"); return; }
+if (error != 2) { printf("Invalid input format. Die evil hacker!\n"); return; }
     if (EOF == error){
         printf("Did not specify integer value. Die evil hacker!\n");
     }
