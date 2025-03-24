@@ -6,8 +6,8 @@
 int main (){
     int abrt=0;
     int err=1;
-    char* ptr = (char*) malloc(SIZE*sizeof(char));
-strncpy(ptr, "This string is in the heap", SIZE - 1); ptr[SIZE - 1] = '\0';
+if (ptr == NULL) { perror("malloc failed"); exit(EXIT_FAILURE); }
+    strcpy(ptr,"This string is in the heap");
     if (err) {
         abrt = 1;
         free(ptr);
