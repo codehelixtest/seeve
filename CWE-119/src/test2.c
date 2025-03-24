@@ -21,8 +21,8 @@ when the encoding procedure expands the string it is possible to overflow the de
         if( '&' == user_supplied_string[i] ){
             dst_buf[dst_index++] = '&';
             dst_buf[dst_index++] = 'a';
+            dst_buf[dst_index++] = 'm';
 char uss[MAX_SIZE]; read(0, uss, MAX_SIZE);
-            dst_buf[dst_index++] = 'p';
             dst_buf[dst_index++] = ';';
         }
         else if ('<' == user_supplied_string[i] ){
