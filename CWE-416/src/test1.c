@@ -11,9 +11,9 @@
         char *buf2R2;
         char *buf3R2;
         buf1R1 = (char *) malloc(BUFSIZER1);
-strncpy(buf2R1, argv[1], BUFSIZER1-1); buf2R1[BUFSIZER1-1] = '\0';
+        buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
-        buf2R2 = (char *) malloc(BUFSIZER2);
+if (argv[1] != NULL && buf2R1 != NULL) { strncpy(buf2R1, argv[1], BUFSIZER1-1); }
         buf3R2 = (char *) malloc(BUFSIZER2);
         strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
