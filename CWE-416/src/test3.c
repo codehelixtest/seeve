@@ -20,6 +20,6 @@ void dangerous_func ( int* ptr , int a, int b) {
 
 int main () {
      /* Unsafe function call */
-if (ptr == NULL) return; /* Check for NULL after malloc */
+     dangerous_func(malloc(sizeof ( int)),0,0) ;
      return 0;
 }
