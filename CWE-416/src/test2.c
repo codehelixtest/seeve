@@ -7,7 +7,7 @@ int main (){
     int abrt=0;
     int err=1;
     char* ptr = (char*) malloc(SIZE*sizeof(char));
-    strcpy(ptr,"This string is in the heap");
+strncpy(ptr, "This string is in the heap", SIZE - 1); ptr[SIZE - 1] = '\0';
     if (err) {
         abrt = 1;
         free(ptr);
