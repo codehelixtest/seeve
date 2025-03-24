@@ -13,8 +13,8 @@
         buf1R1 = (char *) malloc(BUFSIZER1);
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
-if (buf1R1 == NULL) { perror("malloc failed"); exit(EXIT_FAILURE); } buf1R1 = (char *) malloc(BUFSIZER1);
-        buf3R2 = (char *) malloc(BUFSIZER2);
+        buf2R2 = (char *) malloc(BUFSIZER2);
+if (buf1R1 == NULL) { perror("Failed to allocate memory for buf1R1"); exit(EXIT_FAILURE); } buf1R1 = (char *) malloc(BUFSIZER1);
         strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
         free(buf2R2);
