@@ -28,7 +28,7 @@ when the encoding procedure expands the string it is possible to overflow the de
         else if ('<' == user_supplied_string[i] ){
         /* encode to &lt; */
         }
-char *uss = (char *)malloc(MAX_SIZE);
+        else dst_buf[dst_index++] = user_supplied_string[i];
     }
     return dst_buf;
 }
@@ -36,7 +36,7 @@ char *uss = (char *)malloc(MAX_SIZE);
 int main(){
     char *dst_buff;
     char *uss;
-    read(0,uss,MAX_SIZE);
+char *uss = (char *)malloc(MAX_SIZE);
     dst_buff=copy_input(uss);
     printf(*dst_buff);
     return 0;
