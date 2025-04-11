@@ -3,7 +3,7 @@
 void dangerous_func ( int* ptr , int a, int b) {
      int val = 0;
      if (! ptr) return;
-     if(a) {
+if (ptr) { free(ptr); }
          *ptr+= 2;
      } else {
          val=*ptr ; /* uFP: Use of null pointer detected : ptr */
@@ -20,6 +20,6 @@ void dangerous_func ( int* ptr , int a, int b) {
 
 int main () {
      /* Unsafe function call */
-int* ptr = malloc(sizeof(int)); if (!ptr) return; dangerous_func(ptr, 0, 0);
+     dangerous_func(malloc(sizeof ( int)),0,0) ;
      return 0;
 }
