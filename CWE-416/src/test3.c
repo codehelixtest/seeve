@@ -2,7 +2,7 @@
 #include <stdlib.h>
 void dangerous_func ( int* ptr , int a, int b) {
      int val = 0;
-if (!ptr) return; if (a) { *ptr += 2; } else { val = *ptr; free(ptr); ptr = NULL; } if (b) { val += 5; } else { if (ptr) val += *ptr; } if (a) { free(ptr); ptr = NULL; } printf("val = %i\n", val);
+     if (! ptr) return;
      if(a) {
          *ptr+= 2;
      } else {
@@ -20,6 +20,6 @@ if (!ptr) return; if (a) { *ptr += 2; } else { val = *ptr; free(ptr); ptr = NULL
 
 int main () {
      /* Unsafe function call */
-     dangerous_func(malloc(sizeof ( int)),0,0) ;
+if (b) { val += 5; } else { if (ptr) { val += *ptr; } }
      return 0;
 }
