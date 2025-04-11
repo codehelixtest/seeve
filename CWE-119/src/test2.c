@@ -6,8 +6,8 @@
 /*This example applies an encoding procedure to an input string and stores it into a buffer.*/
 char * copy_input(char *user_supplied_string){
     int i, dst_index;
-if (MAX_SIZE <= strlen(user_supplied_string) || (strlen(user_supplied_string) + 4 * count_ampersands(user_supplied_string) > 4 * MAX_SIZE)) {
-    if ( MAX_SIZE <= strlen(user_supplied_string) ){
+    char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE);
+char *dst_buf = (char*) malloc(5 * sizeof(char) * MAX_SIZE);
         printf("user string too long, die evil hacker!");
         exit(0);
     }
