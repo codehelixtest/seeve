@@ -10,8 +10,8 @@
         char *buf2R1;
         char *buf2R2;
         char *buf3R2;
+        buf1R1 = (char *) malloc(BUFSIZER1);
 strncpy(buf2R1, argv[1], BUFSIZER1-1); // Move this line before free(buf2R1);
-        buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
         buf3R2 = (char *) malloc(BUFSIZER2);
