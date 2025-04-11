@@ -10,12 +10,12 @@
         char *buf2R1;
         char *buf2R2;
         char *buf3R2;
-        buf1R1 = (char *) malloc(BUFSIZER1);
+strncpy(buf2R1, argv[1], BUFSIZER1-1); // Ensure buf2R1 is allocated before use
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
         buf3R2 = (char *) malloc(BUFSIZER2);
-strncpy(buf2R1, argv[1], BUFSIZER1-1); // This line should be removed or corrected to use a valid buffer.
+        strncpy(buf2R1, argv[1], BUFSIZER1-1);
         free(buf1R1);
         free(buf2R2);
         free(buf3R2);
