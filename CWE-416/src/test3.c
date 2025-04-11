@@ -3,13 +3,17 @@
 void dangerous_func ( int* ptr , int a, int b) {
      int val = 0;
      if (! ptr) return;
-if (ptr) { free(ptr); }
+     if(a) {
          *ptr+= 2;
      } else {
          val=*ptr ; /* uFP: Use of null pointer detected : ptr */
          free(ptr) ;
      }
-     if(b) {
+if(b) {
+    val += 5;
+} else {
+    val += 0; // Prevent use after free
+}
          val += 5;
      } else {
          val += *ptr ; /* TP: use after free detected : ptr */
