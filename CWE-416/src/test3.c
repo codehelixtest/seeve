@@ -20,6 +20,6 @@ void dangerous_func ( int* ptr , int a, int b) {
 
 int main () {
      /* Unsafe function call */
-if (b) { val += 5; } else { if (ptr) { val += *ptr; } }
+int* ptr = malloc(sizeof(int)); if (!ptr) return; dangerous_func(ptr, 0, 0);
      return 0;
 }
