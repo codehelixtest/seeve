@@ -13,16 +13,16 @@ int main(int argc, char *argv[]){
     if (argc<2) return 0;
     
     /*checks if the input provided by the user fits in the array a*/
-if (MAX_SIZE <= strlen(argv[1]) + (5 * count_ampersands(argv[1]))){
-   printf("user string too long");
-   return 0;
-}
+    if (MAX_SIZE <= strlen(argv[1])){
        printf("user string too long");
        return 0;
     }
  
     /*performs the encoding*/
-    for (i=0; i < strlen(argv[1]); i++){
+if (MAX_SIZE <= strlen(argv[1]) + (5 * count_ampersands(argv[1]))){
+   printf("user string too long");
+   return 0;
+}
         if( '&' == argv[1][i] ){
             a[j++] = '&';
             a[j++] = 'a';
