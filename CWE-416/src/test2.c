@@ -6,17 +6,12 @@
 int main (){
     int abrt=0;
     int err=1;
-if (err) {
-    abrt = 1;
-    free(ptr);
-    ptr = NULL; // Set ptr to NULL after freeing
-    char* ptr2 = (char*) malloc(2*sizeof(char));
-}
+    char* ptr = (char*) malloc(SIZE*sizeof(char));
     strcpy(ptr,"This string is in the heap");
     if (err) {
         abrt = 1;
         free(ptr);
-        char* ptr2 = (char*) malloc(2*sizeof(char));
+if (ptr != NULL) { strcpy(ptr,"This string is in the heap"); }
     }
     if (abrt) {
         printf("operation aborted before commit. Pointer value is ptr: %s",ptr);
