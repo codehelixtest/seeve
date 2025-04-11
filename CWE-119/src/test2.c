@@ -6,7 +6,11 @@
 /*This example applies an encoding procedure to an input string and stores it into a buffer.*/
 char * copy_input(char *user_supplied_string){
     int i, dst_index;
-    char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE);
+char *dst_buf = (char*) malloc(4*sizeof(char)*MAX_SIZE);
+if (dst_buf == NULL) {
+    fprintf(stderr, "Memory allocation failed\n");
+    exit(1);
+}
     if ( MAX_SIZE <= strlen(user_supplied_string) ){
         printf("user string too long, die evil hacker!");
         exit(0);
@@ -37,7 +41,7 @@ int main(){
     char *dst_buff;
     char *uss;
     read(0,uss,MAX_SIZE);
-char uss[MAX_SIZE];
+    dst_buff=copy_input(uss);
     printf(*dst_buff);
     return 0;
 }
