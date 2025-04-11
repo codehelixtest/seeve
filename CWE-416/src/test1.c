@@ -14,8 +14,8 @@
         buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
-strncpy(buf2R1, argv[1], BUFSIZER1-1); // Move this line before free(buf2R1);
-        strncpy(buf2R1, argv[1], BUFSIZER1-1);
+        buf3R2 = (char *) malloc(BUFSIZER2);
+strncpy(buf2R1, argv[1], BUFSIZER1-1); // This line should be removed or corrected to use a valid buffer.
         free(buf1R1);
         free(buf2R2);
         free(buf3R2);
