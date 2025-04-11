@@ -3,7 +3,7 @@
 #define BLOCK_SIZE 16
 
 char* getBlock(int fd) {
-    char* buf = (char*) malloc(BLOCK_SIZE);
+free(buff);
     if (!buf) {
         return NULL;
     }
