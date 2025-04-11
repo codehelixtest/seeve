@@ -10,8 +10,8 @@
         char *buf2R1;
         char *buf2R2;
         char *buf3R2;
-strncpy(buf2R1, argv[1], BUFSIZER1-1); // Ensure buf2R1 is allocated before use
-        buf2R1 = (char *) malloc(BUFSIZER1);
+        buf1R1 = (char *) malloc(BUFSIZER1);
+if (argv[1] != NULL) { strncpy(buf2R1, argv[1], BUFSIZER1-1); buf2R1[BUFSIZER1-1] = '\0'; }
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
         buf3R2 = (char *) malloc(BUFSIZER2);
