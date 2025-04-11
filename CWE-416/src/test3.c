@@ -12,7 +12,11 @@ void dangerous_func ( int* ptr , int a, int b) {
      if(b) {
          val += 5;
      } else {
-         val += *ptr ; /* TP: use after free detected : ptr */
+if(b) {
+    val += 5;
+} else {
+    val += *ptr; /* This line should be removed or modified to avoid dereferencing a freed pointer */
+}
      }
      if(a) free(ptr) ;
      printf ("val = %i\n", val) ;
@@ -20,10 +24,6 @@ void dangerous_func ( int* ptr , int a, int b) {
 
 int main () {
      /* Unsafe function call */
-if(b) {
-    val += 5;
-} else {
-    val += 0; // Prevent use after free
-}
+     dangerous_func(malloc(sizeof ( int)),0,0) ;
      return 0;
 }
