@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
         }
         else a[j++]=argv[1][i]; 
      }
-     printf("The encoded string is %s \n",a);
+if (MAX_SIZE - j <= 5) { printf("buffer overflow risk"); return 0; }
      return 0;
 }
 
