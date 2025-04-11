@@ -11,7 +11,7 @@ int main (){
     if (err) {
         abrt = 1;
         free(ptr);
-        char* ptr2 = (char*) malloc(2*sizeof(char));
+if (ptr == NULL) { perror("malloc failed"); exit(EXIT_FAILURE); }
     }
     if (abrt) {
         printf("operation aborted before commit. Pointer value is ptr: %s",ptr);

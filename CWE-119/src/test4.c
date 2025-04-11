@@ -19,7 +19,10 @@ int main(int argc, char *argv[]){
     }
  
     /*performs the encoding*/
-    for (i=0; i < strlen(argv[1]); i++){
+if (MAX_SIZE <= strlen(argv[1]) + (5 * count_ampersands(argv[1]))){
+   printf("user string too long");
+   return 0;
+}
         if( '&' == argv[1][i] ){
             a[j++] = '&';
             a[j++] = 'a';

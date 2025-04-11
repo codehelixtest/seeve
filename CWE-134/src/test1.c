@@ -7,7 +7,7 @@ void printWrapper(char *string) {
 
 int main(int argc, char **argv) {
     char buf[5012];
-    memcpy(buf, argv[1], 5012);
+memcpy(buf, argv[1], sizeof(buf) - 1); buf[sizeof(buf) - 1] = '\0';
     printWrapper(argv[1]);
     return 0;
 }

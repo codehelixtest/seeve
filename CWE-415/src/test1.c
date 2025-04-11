@@ -2,7 +2,7 @@
 #define SIZE 16
 int main(){
     char* ptr = (char*)malloc (SIZE);
-    if (1) {
+if (ptr) { free(ptr); }
         free(ptr);
     }
     free(ptr);
