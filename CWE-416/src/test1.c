@@ -10,8 +10,8 @@
         char *buf2R1;
         char *buf2R2;
         char *buf3R2;
-if (buf1R1 == NULL || buf2R1 == NULL || buf2R2 == NULL || buf3R2 == NULL) { perror("Memory allocation failed"); exit(EXIT_FAILURE); }
-        buf2R1 = (char *) malloc(BUFSIZER1);
+        buf1R1 = (char *) malloc(BUFSIZER1);
+if (buf1R1 == NULL) { perror("Failed to allocate buf1R1"); exit(EXIT_FAILURE); } buf1R1 = (char *) malloc(BUFSIZER1); if (buf2R1 == NULL) { perror("Failed to allocate buf2R1"); exit(EXIT_FAILURE); } buf2R1 = (char *) malloc(BUFSIZER1);
         free(buf2R1);
         buf2R2 = (char *) malloc(BUFSIZER2);
         buf3R2 = (char *) malloc(BUFSIZER2);
