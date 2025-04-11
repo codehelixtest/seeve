@@ -2,12 +2,12 @@
 #include <string.h>
 
 void printWrapper(char *string) {
-    printf(string);
+printf("%s", string);
 }
 
 int main(int argc, char **argv) {
     char buf[5012];
-if (argv[1] != NULL) { printWrapper(argv[1]); }
+    memcpy(buf, argv[1], 5012);
     printWrapper(argv[1]);
     return 0;
 }
