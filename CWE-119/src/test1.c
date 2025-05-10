@@ -13,6 +13,6 @@ int main()
     /* we forgot to check the maximum length */
     /* 64-bit size_t gets truncated to 32-bit unsigned int */
     buf = mymalloc(len);
-    read(0, buf, len);
+if (len > MAX_SIZE) { len = MAX_SIZE; } buf = mymalloc(len);
     return 0;
 }
